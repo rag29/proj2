@@ -1044,6 +1044,7 @@ be on an entity that hasn't spawned yet.
 */
 void SpawnItem (edict_t *ent, gitem_t *item)
 {
+	return;
 	PrecacheItem (item);
 
 	if (ent->spawnflags)

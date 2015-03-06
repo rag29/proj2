@@ -514,7 +514,7 @@ void player_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damag
 		LookAtKiller (self, inflictor, attacker);
 		self->client->ps.pmove.pm_type = PM_DEAD;
 		ClientObituary (self, inflictor, attacker);
-		TossClientWeapon (self);
+		//TossClientWeapon (self);
 		if (deathmatch->value)
 			Cmd_Help_f (self);		// show scores
 
@@ -640,19 +640,19 @@ void InitClientPersistant (gclient_t *client)
 
         memset (&client->pers, 0, sizeof(client->pers));
 
-        item = FindItem("Grenade Launcher"); //functionality of a long-range bow and arrow
+        item = FindItem("Grenade Launcher"); //functionality of a catapult
         client->pers.selected_item = ITEM_INDEX(item);
         client->pers.inventory[client->pers.selected_item] = 1;
 
-        item = FindItem("Grenades"); //arrows
+        item = FindItem("Grenades"); //catapult ammo
         client->pers.selected_item = ITEM_INDEX(item);
-        client->pers.inventory[client->pers.selected_item] = 25;
+        client->pers.inventory[client->pers.selected_item] = 75; //25
 
-        item = FindItem("Rockets"); //catapult ammo
+        item = FindItem("Rockets"); //flaming arrows
         client->pers.selected_item = ITEM_INDEX(item);
-        client->pers.inventory[client->pers.selected_item] = 30;
+        client->pers.inventory[client->pers.selected_item] = 75;  //30
 
-        item = FindItem("Rocket Launcher"); //functions as a flaming catapult
+        item = FindItem("Rocket Launcher"); //crossbow that shoots 2 flaming arrows at a time
         client->pers.selected_item = ITEM_INDEX(item);
         client->pers.inventory[client->pers.selected_item] = 1;
 
@@ -670,10 +670,10 @@ void InitClientPersistant (gclient_t *client)
         client->pers.inventory[client->pers.selected_item] = 1;
         item = FindItem("Grenades"); //smoke bombs
         client->pers.selected_item = ITEM_INDEX(item);
-        client->pers.inventory[client->pers.selected_item] = 50;
+        client->pers.inventory[client->pers.selected_item] = 75; //50
         item = FindItem("Slugs"); //lightning
-        client->pers.selected_item = ITEM_INDEX(item);
-        client->pers.inventory[client->pers.selected_item] = 30;
+        client->pers.selected_item = ITEM_INDEX(item);   
+        client->pers.inventory[client->pers.selected_item] = 75; //30
         item = FindItem("Railgun"); //lightning rod
         client->pers.selected_item = ITEM_INDEX(item);
         client->pers.inventory[client->pers.selected_item] = 1;
@@ -696,7 +696,7 @@ void InitClientPersistant (gclient_t *client)
         client->pers.inventory[client->pers.selected_item] = 50;
         item = FindItem("Bullets"); //spells 
         client->pers.selected_item = ITEM_INDEX(item);
-        client->pers.inventory[client->pers.selected_item] = 50;
+        client->pers.inventory[client->pers.selected_item] = 75; //50
 		item = FindItem("Machinegun"); //rapid-fire spell shooter
         client->pers.selected_item = ITEM_INDEX(item);
         client->pers.inventory[client->pers.selected_item] = 1;
